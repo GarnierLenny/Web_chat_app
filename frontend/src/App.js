@@ -1,7 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import { connect, sendMsg } from './api';
 
 function App() {
+  const sendHello = () => {
+    sendMsg("Hello World!")
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +22,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={sendHello}>Send Hello</button>
       </header>
     </div>
   );
