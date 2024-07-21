@@ -4,6 +4,7 @@ import './App.css';
 import { connect, sendMsg } from './api';
 import Header from './components/Header/Head';
 import ChatHistory from './components/ChatHistory/ChatHistory';
+import ChatInput from "./components/ChatInput/ChatInput";
 
 function App() {
 
@@ -17,15 +18,18 @@ function App() {
 
   });
 
-  const sendHello = () => {
-    sendMsg("Hello World!")
+  const send = (event) => {
+    if(event.keyCode === 13) {
+      sendMsg(event.target.value);
+      event.target.value = "";
+    }
   }
 
   return (
     <div className="App">
       <Header />
       <ChatHistory history={chatHistory} />
-      <button onClick={sendHello}>Send Hello</button>
+      <ChatInput send={send} />
     </div>
   );
 }
